@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 	<title>Email oficial de SP</title>
 </head>
 <body>
@@ -15,7 +16,14 @@
 
 			let name = document.querySelector("#name").value;
 
+			let final = document.querySelector("#final");
+
 			let nascimento_date = document.querySelector("#nascimento").value;
+
+			if(!name || !nascimento_date) {
+				alert("Digite seu nome completo e data de nascimento!");
+				return false;
+			}
 
 			let subnames = name.split(" ");
 
@@ -37,7 +45,7 @@
 
 			let email = `${name}.${nascimento_date}@edu.sme.prefeitura.sp.gov.br`;
 
-			let final = document.querySelector("#final");
+			
 
 			final.innerHTML = `Seu email é ${email}<br>Sua senha é 12345678<br>Adicione a conta como conta google e no aplicativo do Classroom (ou google sala de aula) acesse com a conta mostrada acima.<br><br><p style="font-size: 10px;">Site feito por Isaque Oliveira 8C</p>`;
 
