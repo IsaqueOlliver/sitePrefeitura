@@ -27,6 +27,11 @@
 
 			let subnames = name.split(" ");
 
+			if(subnames.length == 1) {
+				alert("Digite o nome completo.");
+				return false;
+			}
+
 			for(let i = 0; i < subnames.length; i++) {
 				if(i == 0 || i == subnames.length-1) continue;
 				if(subnames[i].length == 2) {
@@ -40,6 +45,11 @@
 			name = subnames.join("").toLowerCase();
 
 			let nascimento_info = nascimento_date.split("-");
+
+			if(nascimento_info[0] < 2016) {
+				alert(`Parece que seu ano de nascimento está incorreto. Tem certeza que nasceu em ${nascimento_info[0]}?`);
+				return false;
+			}
 
 			nascimento_date = `${nascimento_info[1]}${nascimento_info[2]}${nascimento_info[0]}`;
 
