@@ -46,7 +46,7 @@
 
 			let nascimento_info = nascimento_date.split("-");
 
-			if(nascimento_info[0] < 2016) {
+			if(nascimento_info[0] >= 2016) {
 				alert(`Parece que seu ano de nascimento está incorreto. Tem certeza que nasceu em ${nascimento_info[0]}?`);
 				return false;
 			}
