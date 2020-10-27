@@ -41,6 +41,7 @@
 			}
 
 			for(let i = 0; i < subnames.length; i++) {
+				if(subnames.length <= 2) break;
 				if(i == 0 || i == subnames.length-1) continue;
 				if(subnames[i].length == 2) {
 					subnames[i] = "";
