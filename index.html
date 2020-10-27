@@ -3,6 +3,11 @@
 <head>
 	 <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 	<title>Email oficial de SP</title>
+	<style type="text/css">
+		body {
+			word-break: break-word;
+		}
+	</style>
 </head>
 <body>
 	<p>Nome completo: </p><input placeholder="Digite seu nome completo" id="name"></input>
@@ -12,6 +17,9 @@
 	<div id="final"></div>
 
 	<script type="text/javascript">
+
+		var email = "";
+
 		function generate() {
 
 			let name = document.querySelector("#name").value;
@@ -53,11 +61,58 @@
 
 			nascimento_date = `${nascimento_info[1]}${nascimento_info[2]}${nascimento_info[0]}`;
 
-			let email = `${name}.${nascimento_date}@edu.sme.prefeitura.sp.gov.br`;
+			email = `${name}.${nascimento_date}@edu.sme.prefeitura.sp.gov.br`;
 
-			final.innerHTML = `Seu email é ${email}<br>Sua senha é 12345678<br>Adicione a conta como conta google e no aplicativo do Classroom (ou google sala de aula) acesse com a conta mostrada acima.<br><br><p style="font-size: 10px;">Site feito por Isaque Oliveira 8C</p>`;
+			final.innerHTML = `Seu email é ${email}<br>Sua senha é 12345678<br>Adicione a conta como conta google e no aplicativo do Classroom (ou google sala de aula) acesse com a conta mostrada acima.<br><button onclick="copiarEmail()">Copiar Email</button><br><br><p style="font-size: 10px;">Site feito por Isaque Oliveira 8C</p>`;
 
 		}
+
+		function copiarEmail() {
+
+		  if(!email) return false;
+
+		  let text = email;
+
+		  var textArea = document.createElement("textarea");
+
+		  textArea.style.position = 'fixed';
+		  textArea.style.top = 0;
+		  textArea.style.left = 0;
+
+		  // Ensure it has a small width and height. Setting to 1px / 1em
+		  // doesn't work as this gives a negative w/h on some browsers.
+		  textArea.style.width = '2em';
+		  textArea.style.height = '2em';
+
+		  // We don't need padding, reducing the size if it does flash render.
+		  textArea.style.padding = 0;
+
+		  // Clean up any borders.
+		  textArea.style.border = 'none';
+		  textArea.style.outline = 'none';
+		  textArea.style.boxShadow = 'none';
+
+		  // Avoid flash of white box if rendered for any reason.
+		  textArea.style.background = 'transparent';
+
+
+		  textArea.value = text;
+
+		  document.body.appendChild(textArea);
+		  textArea.focus();
+		  textArea.select();
+
+		  try {
+		    var successful = document.execCommand('copy');
+		    var msg = successful ? 'successful' : 'unsuccessful';
+		    console.log('Copying text command was ' + msg);
+		  } catch (err) {
+		    console.log('Oops, unable to copy');
+		  }
+
+		  document.body.removeChild(textArea);
+		}
+
 	</script>
 </body>
 </html>
