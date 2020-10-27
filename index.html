@@ -7,7 +7,7 @@
 <body>
 	<p>Nome completo: </p><input placeholder="Digite seu nome completo" id="name"></input>
 	<p>Data de nascimento: </p><input type="date" id="nascimento"></input>
-	<br/><button onclick="generate()">Pronto</button>
+	<br/><button onclick="generate()" style="margin-top: 20px; margin-bottom: 20px;">Pronto</button>
 
 	<div id="final"></div>
 
@@ -54,8 +54,6 @@
 			nascimento_date = `${nascimento_info[1]}${nascimento_info[2]}${nascimento_info[0]}`;
 
 			let email = `${name}.${nascimento_date}@edu.sme.prefeitura.sp.gov.br`;
-
-			
 
 			final.innerHTML = `Seu email é ${email}<br>Sua senha é 12345678<br>Adicione a conta como conta google e no aplicativo do Classroom (ou google sala de aula) acesse com a conta mostrada acima.<br><br><p style="font-size: 10px;">Site feito por Isaque Oliveira 8C</p>`;
 
