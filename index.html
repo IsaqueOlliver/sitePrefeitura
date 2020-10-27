@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Email oficial de SP</title>
+</head>
+<body>
+	<p>Nome completo: </p><input placeholder="Digite seu nome completo" id="name"></input>
+	<p>Data de nascimento: </p><input type="date" id="nascimento"></input>
+	<br/><button onclick="generate()">Pronto</button>
+
+	<div id="final"></div>
+
+	<script type="text/javascript">
+		function generate() {
+
+			let name = document.querySelector("#name").value;
+
+			let nascimento_date = document.querySelector("#nascimento").value;
+
+			let subnames = name.split(" ");
+
+			for(let i = 0; i < subnames.length; i++) {
+				if(i == 0 || i == subnames.length-1) continue;
+				if(subnames[i].length == 2) {
+					subnames[i] = "";
+					continue;
+				}
+
+				subnames[i] = subnames[i][0];
+			}
+
+			name = subnames.join("").toLowerCase();
+
+			let nascimento_info = nascimento_date.split("-");
+
+			nascimento_date = `${nascimento_info[1]}${nascimento_info[2]}${nascimento_info[0]}`;
+
+			let email = `${name}.${nascimento_date}@edu.sme.prefeitura.sp.gov.br`;
+
+			let final = document.querySelector("#final");
+
+			final.innerHTML = `Seu email é ${email}<br>Sua senha é 12345678<br>Adicione a conta como conta google e no aplicativo do Classroom (ou google sala de aula) acesse com a conta mostrada acima.<br><br><p style="font-size: 10px;">Site feito por Isaque Oliveira 8C</p>`;
+
+		}
+	</script>
+</body>
+</html>
