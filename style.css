@@ -26,23 +26,38 @@ body {
 }
 
 #name {
+	padding-bottom: 8.5px;
+	padding-top: 8.5px;
+	padding-left: 8.5px;
 	margin-left: 10px;
+	border-radius: 5px;
+	border: 1px solid black;
 }
 
 #nascimento {
 	padding-bottom: 8.5px;
 	padding-top: 8.5px;
+	padding-left: 8.5px;
 	margin-left: 10px;
 	width: 190px;
+	border: 1px solid black;
+	border-radius: 5px;
 }
 
 .button {
 	width: 190px;
 	height: 40px;
-	border-radius: 30px;
+	border-radius: 15px;
 	margin-top: 30px;
 	margin-left: 10px;
 	background-image: linear-gradient(rgb(0, 102, 255), rgb(14, 110, 255));
 	border: none;
 	color: white;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.4);
+}
+
+.quest {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
