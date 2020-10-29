@@ -44,7 +44,12 @@ function generate() {
 
 	email = `${name}.${nascimento_date}@edu.sme.prefeitura.sp.gov.br`;
 
-	final.innerHTML = `Seu email é ${email}<br>Sua senha é 12345678<br>Adicione a conta como conta google e no aplicativo do Classroom (ou google sala de aula) acesse com a conta mostrada acima.<br><button onclick="copiarEmail()">Copiar Email</button><br><br><p style="font-size: 10px;">Site feito por Isaque Oliveira 8C</p>`;
+	final.innerHTML = `
+	<div class="quest">Seu email é ${email}</div><br>
+	<div class="quest">Sua senha é 12345678</div><br>
+	<div class="quest">Adicione a conta como conta google e no aplicativo do Classroom (ou google sala de aula) acesse com a conta mostrada acima.</div><br>
+	<div class="quest"><button onclick="copiarEmail()" class="button2">Copiar Email</button></div><br><br>
+	<div class="quest"><p style="font-size: 10px;">Site feito por Isaque Oliveira 8C</p></div>`;
 
 }
 
