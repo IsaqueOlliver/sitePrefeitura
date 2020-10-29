@@ -1,119 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-	 <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 	<title>Email oficial de SP</title>
-	<style type="text/css">
-		body {
-			word-break: break-word;
-		}
-	</style>
+	<link rel="stylesheet" type="text/css" href="./style.css">
+
 </head>
 <body>
-	<p>Nome completo: </p><input placeholder="Digite seu nome completo" id="name"></input>
-	<p>Data de nascimento: </p><input type="date" id="nascimento"></input>
-	<br/><button onclick="generate()" style="margin-top: 20px; margin-bottom: 20px;">Pronto</button>
+
+	<div class="head-div"></div>
+
+	<div class="quest">
+		<p class="fullname">Nome completo</p><input placeholder="Digite seu nome completo" id="name"></input>
+		<p class="date_nasc">Data de nascimento</p><input type="date" id="nascimento"></input>
+		<br/><button onclick="generate()" class="button">Pronto</button>
+	</div>
 
 	<div id="final"></div>
 
-	<script type="text/javascript">
+	<script type="text/javascript" src="./script.js"></script>
 
-		var email = "";
-
-		function generate() {
-
-			let name = document.querySelector("#name").value;
-
-			let final = document.querySelector("#final");
-
-			let nascimento_date = document.querySelector("#nascimento").value;
-
-			if(!name || !nascimento_date) {
-				alert("Digite seu nome completo e data de nascimento!");
-				return false;
-			}
-
-			let subnames = name.split(" ");
-
-			if(subnames.length == 1) {
-				alert("Digite o nome completo.");
-				return false;
-			}
-
-			for(let i = 0; i < subnames.length; i++) {
-				if(subnames.length <= 2) break;
-				if(i == 0 || i == subnames.length-1) continue;
-				if(subnames[i].length == 2) {
-					subnames[i] = "";
-					continue;
-				}
-
-				subnames[i] = subnames[i][0];
-			}
-
-			name = subnames.join("").toLowerCase();
-
-			let nascimento_info = nascimento_date.split("-");
-
-			if(nascimento_info[0] >= 2016) {
-				alert(`Parece que seu ano de nascimento está incorreto. Tem certeza que nasceu em ${nascimento_info[0]}?`);
-				return false;
-			}
-
-			nascimento_date = `${nascimento_info[2]}${nascimento_info[1]}${nascimento_info[0]}`;
-
-			email = `${name}.${nascimento_date}@edu.sme.prefeitura.sp.gov.br`;
-
-			final.innerHTML = `Seu email é ${email}<br>Sua senha é 12345678<br>Adicione a conta como conta google e no aplicativo do Classroom (ou google sala de aula) acesse com a conta mostrada acima.<br><button onclick="copiarEmail()">Copiar Email</button><br><br><p style="font-size: 10px;">Site feito por Isaque Oliveira 8C</p>`;
-
-		}
-
-		function copiarEmail() {
-
-		  if(!email) return false;
-
-		  let text = email;
-
-		  var textArea = document.createElement("textarea");
-
-		  textArea.style.position = 'fixed';
-		  textArea.style.top = 0;
-		  textArea.style.left = 0;
-
-		  // Ensure it has a small width and height. Setting to 1px / 1em
-		  // doesn't work as this gives a negative w/h on some browsers.
-		  textArea.style.width = '2em';
-		  textArea.style.height = '2em';
-
-		  // We don't need padding, reducing the size if it does flash render.
-		  textArea.style.padding = 0;
-
-		  // Clean up any borders.
-		  textArea.style.border = 'none';
-		  textArea.style.outline = 'none';
-		  textArea.style.boxShadow = 'none';
-
-		  // Avoid flash of white box if rendered for any reason.
-		  textArea.style.background = 'transparent';
-
-
-		  textArea.value = text;
-
-		  document.body.appendChild(textArea);
-		  textArea.focus();
-		  textArea.select();
-
-		  try {
-		    var successful = document.execCommand('copy');
-		    var msg = successful ? 'successful' : 'unsuccessful';
-		    console.log('Copying text command was ' + msg);
-		  } catch (err) {
-		    console.log('Oops, unable to copy');
-		  }
-
-		  document.body.removeChild(textArea);
-		}
-
-	</script>
 </body>
 </html>
